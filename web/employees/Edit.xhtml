@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmployeesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmployeesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{employeesController.selected.id}" title="#{bundle.EditEmployeesTitle_id}" required="true" requiredMessage="#{bundle.EditEmployeesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{employeesController.selected.name}" title="#{bundle.EditEmployeesTitle_name}" required="true" requiredMessage="#{bundle.EditEmployeesRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{employeesController.selected.address}" title="#{bundle.EditEmployeesTitle_address}" required="true" requiredMessage="#{bundle.EditEmployeesRequiredMessage_address}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesLabel_salary}" for="salary" />
+                    <h:inputText id="salary" value="#{employeesController.selected.salary}" title="#{bundle.EditEmployeesTitle_salary}" required="true" requiredMessage="#{bundle.EditEmployeesRequiredMessage_salary}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{employeesController.update}" value="#{bundle.EditEmployeesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmployeesViewLink}"/>
+                <br />
+                <h:commandLink action="#{employeesController.prepareList}" value="#{bundle.EditEmployeesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmployeesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

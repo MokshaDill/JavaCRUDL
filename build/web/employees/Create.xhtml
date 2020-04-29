@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEmployeesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEmployeesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{employeesController.selected.id}" title="#{bundle.CreateEmployeesTitle_id}" required="true" requiredMessage="#{bundle.CreateEmployeesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateEmployeesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{employeesController.selected.name}" title="#{bundle.CreateEmployeesTitle_name}" required="true" requiredMessage="#{bundle.CreateEmployeesRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateEmployeesLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{employeesController.selected.address}" title="#{bundle.CreateEmployeesTitle_address}" required="true" requiredMessage="#{bundle.CreateEmployeesRequiredMessage_address}"/>
+                    <h:outputLabel value="#{bundle.CreateEmployeesLabel_salary}" for="salary" />
+                    <h:inputText id="salary" value="#{employeesController.selected.salary}" title="#{bundle.CreateEmployeesTitle_salary}" required="true" requiredMessage="#{bundle.CreateEmployeesRequiredMessage_salary}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{employeesController.create}" value="#{bundle.CreateEmployeesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{employeesController.prepareList}" value="#{bundle.CreateEmployeesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEmployeesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
